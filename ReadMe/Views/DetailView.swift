@@ -11,10 +11,24 @@ struct DetailView: View {
     let book: Book
     
     var body: some View {
-        VStack {
-            Book.Image(title: book.title)
+        BookDetail(book: book)
+    }
+}
+
+struct BookDetail: View {
+    let book: Book
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(book.title)
+                .font(.title2.weight(.bold))
+            Text(book.author)
+                .font(.title3)
+                .foregroundColor(.secondary)
+            Book.Image(title: book.title, largeImage: true)
             Spacer()
         }
+        .padding()
     }
 }
 
@@ -23,3 +37,4 @@ struct DetailView_Previews: PreviewProvider {
         DetailView(book: .init())
     }
 }
+
