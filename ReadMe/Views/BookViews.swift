@@ -7,10 +7,27 @@
 
 import SwiftUI
 
+struct TitleAndAuthorStack: View {
+    var book: Book
+    var titleFont: Font
+    var authorFont: Font
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(book.title)
+                .font(titleFont)
+            Text(book.author)
+                .font(authorFont)
+                .foregroundColor(.secondary)
+        }
+    }
+}
+
+
 extension Book {
     struct Image: View {
         var title: String
-        var largeImage: Bool = false
+        var size: CGFloat?
         
         var body: some View {
             let symbol = SwiftUI.Image(title: title) ?? .init(systemName: "book")
@@ -18,10 +35,7 @@ extension Book {
             symbol
                 .resizable()
                 .scaledToFit()
-                .frame(
-                    width: largeImage ? nil : 80,
-                    height: largeImage ? nil : 80
-                )
+                .frame(width: size, height: size)
                 .font(.title.weight(.light))
                 .foregroundColor(.secondary.opacity(0.5))
         }
@@ -45,9 +59,9 @@ extension Image {
 struct Book_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            Book.Image(title: Book().title)
-            Book.Image(title: "")
-            Book.Image(title: "📖")
+            Book.Image(title: Book().title, size: 80)
+            Book.Image(title: "", size: 80)
+            Book.Image(title: "📖", size: 80)
         }
     }
 }
@@ -55,9 +69,10 @@ struct Book_Previews: PreviewProvider {
 struct Book_largeImage_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            Book.Image(title: Book().title, largeImage: true)
-            Book.Image(title: "", largeImage: true)
-            Book.Image(title: "📖", largeImage: true)
+            TitleAndAuthorStack(book: .init(), titleFont: .title, authorFont: .title2)
+            Book.Image(title: Book().title, size: nil)
+            Book.Image(title: "", size: nil)
+            Book.Image(title: "📖", size: nil)
         }
     }
 }
