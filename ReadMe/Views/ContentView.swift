@@ -12,8 +12,11 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            List(library.sortedBooks, id: \.self) { book in
-                BookRow(book: book, image: $library.images[book])
+            List(library.sortedBooks) { book in
+                BookRow(
+                    book: book,
+                    image: $library.images[book]
+                )
             }
             .navigationTitle("My Library")
         }
@@ -21,15 +24,23 @@ struct ContentView: View {
 }
 
 struct BookRow: View {
-    var book: Book
+    @ObservedObject var book: Book
     @Binding var image: Image?
     
     var body: some View {
         NavigationLink(destination: DetailView(book: book, image: $image)) {
             HStack {
                 Book.Image(image: image, title: book.title, size: 80, cornerRadius: 12)
-                TitleAndAuthorStack(book: book, titleFont: .title2, authorFont: .title3)
-                    .lineLimit(1)
+                VStack(alignment: .leading) {
+                    TitleAndAuthorStack(book: book, titleFont: .title2, authorFont: .title3)
+                    if !book.microReview.isEmpty {
+                        Spacer()
+                        Text(book.microReview)
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
+                }
+                .lineLimit(1)
             }
         }
         .padding(.vertical)
@@ -39,5 +50,6 @@ struct BookRow: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .previewedInAllColorSchemes
     }
 }
