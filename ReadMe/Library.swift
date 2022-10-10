@@ -57,6 +57,11 @@ class Library: ObservableObject {
         images[book] = image
     }
     
+    func deleteBook() {
+        // TODO: Remove book
+        // TODO: Remove image
+    }
+    
     /// An in-memory cache of the manually-sorted books.
     @Published private var booksCache: [Book] = [
         .init(title: "Ein Neues Land", author: "Shaun Tan"),
