@@ -34,6 +34,8 @@ struct ContentView: View {
                     SectionView(section: $0)
                 }
             }
+            .toolbar(content: EditButton.init)
+            .listStyle(.insetGrouped)
             .navigationTitle("My Library")
         }
     }
@@ -92,7 +94,6 @@ private struct SectionView: View {
                                     book.readMe.toggle()
                                     library.sortBooks()
                                 }
-                                
                             } label: {
                                 book.readMe ?
                                 Label("Finished", systemImage: "bookmark.slash") :
@@ -101,13 +102,21 @@ private struct SectionView: View {
                             .tint(.accentColor)
                         }
                         .swipeActions(edge: .trailing) {
-                            Button {
-                                // TODO
+                            Button(role: .destructive) {
+                                guard let index = books.firstIndex(where: { $0.id == book.id }) else { return }
+                                withAnimation {
+                                    library.deleteBooks(atOffsets: .init(integer: index), section: section)
+                                }
                             } label: {
                                 Label("Delete", systemImage: "trash")
                             }
-
                         }
+                }
+                .onDelete { indexSet in
+                    library.deleteBooks(atOffsets: indexSet, section: section)
+                }
+                .onMove { indexes, newOffset in
+                    library.moveBooks(oldOffsets: indexes, newOffset: newOffset, section: section)
                 }
                 .labelStyle(.iconOnly)
             } header: {
@@ -121,7 +130,6 @@ private struct SectionView: View {
                 }
                 .listRowInsets(.init())
             }
-
         }
     }
 }
