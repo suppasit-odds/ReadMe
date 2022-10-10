@@ -10,7 +10,7 @@ import SwiftUI
 
 struct DetailView: View {
     @ObservedObject var book: Book
-    @Binding var image: Image?
+    @EnvironmentObject var library: Library
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -26,7 +26,7 @@ struct DetailView: View {
             }
             ReviewAndImageStack(
                 book: book,
-                image: $image
+                image: $library.images[book]
             )
             Spacer()
         }
@@ -37,7 +37,8 @@ struct DetailView: View {
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(book: .init(), image: .constant(nil))
+        DetailView(book: .init())
+            .environmentObject(Library())
             .previewedInAllColorSchemes
     }
 }
