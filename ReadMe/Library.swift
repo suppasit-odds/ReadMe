@@ -31,8 +31,25 @@
 /// THE SOFTWARE.
 import SwiftUI
 
+enum Section: CaseIterable {
+    case readMe
+    case finished
+}
+
 class Library: ObservableObject {
-    var sortedBooks: [Book] { booksCache }
+    var sortedBooks: [Section: [Book]] {
+        let groupBooks = Dictionary(grouping: booksCache, by: \.readMe)
+        return Dictionary(uniqueKeysWithValues: groupBooks.map {
+            (($0.key ? .readMe : .finished), $0.value)
+        })
+    }
+    
+    func sortBooks() {
+        booksCache = sortedBooks
+                        .sorted { $1.key == .finished }
+                        .flatMap { $0.value }
+        objectWillChange.send()
+    }
     
     /// Adds new book at the start of the library's manual-sorted books.
     func addNewBook(_ book: Book, image: Image?) {
