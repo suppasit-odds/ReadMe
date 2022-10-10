@@ -16,7 +16,8 @@
 		194D575228F1E4D100DCD0ED /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194D575128F1E4D100DCD0ED /* Library.swift */; };
 		194D575428F1E7B800DCD0ED /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194D575328F1E7B800DCD0ED /* DetailView.swift */; };
 		194D575628F2C58B00DCD0ED /* PHPickerViewController.View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194D575528F2C58B00DCD0ED /* PHPickerViewController.View.swift */; };
-		194D575828F39A4100DCD0ED /* AddNewBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194D575728F39A4100DCD0ED /* AddNewBookView.swift */; };
+		194D575828F39A4100DCD0ED /* NewBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194D575728F39A4100DCD0ED /* NewBookView.swift */; };
+		197148EA28F43F8E002FBDB0 /* ReviewAndImageStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197148E928F43F8E002FBDB0 /* ReviewAndImageStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +31,8 @@
 		194D575128F1E4D100DCD0ED /* Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		194D575328F1E7B800DCD0ED /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		194D575528F2C58B00DCD0ED /* PHPickerViewController.View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PHPickerViewController.View.swift; sourceTree = "<group>"; };
-		194D575728F39A4100DCD0ED /* AddNewBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewBookView.swift; sourceTree = "<group>"; };
+		194D575728F39A4100DCD0ED /* NewBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBookView.swift; sourceTree = "<group>"; };
+		197148E928F43F8E002FBDB0 /* ReviewAndImageStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewAndImageStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +90,8 @@
 				194D574F28F0F17900DCD0ED /* BookViews.swift */,
 				194D575328F1E7B800DCD0ED /* DetailView.swift */,
 				194D575528F2C58B00DCD0ED /* PHPickerViewController.View.swift */,
-				194D575728F39A4100DCD0ED /* AddNewBookView.swift */,
+				194D575728F39A4100DCD0ED /* NewBookView.swift */,
+				197148E928F43F8E002FBDB0 /* ReviewAndImageStack.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -167,9 +170,10 @@
 				194D575428F1E7B800DCD0ED /* DetailView.swift in Sources */,
 				194D573D28F0EDFF00DCD0ED /* ReadMeApp.swift in Sources */,
 				194D575228F1E4D100DCD0ED /* Library.swift in Sources */,
-				194D575828F39A4100DCD0ED /* AddNewBookView.swift in Sources */,
+				194D575828F39A4100DCD0ED /* NewBookView.swift in Sources */,
 				194D575628F2C58B00DCD0ED /* PHPickerViewController.View.swift in Sources */,
 				194D574B28F0F06200DCD0ED /* Book.swift in Sources */,
+				197148EA28F43F8E002FBDB0 /* ReviewAndImageStack.swift in Sources */,
 				194D575028F0F17900DCD0ED /* BookViews.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
