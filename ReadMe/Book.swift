@@ -8,8 +8,8 @@
 import Combine
 
 class Book: ObservableObject {
-    let title: String
-    let author: String
+    var title: String
+    var author: String
     @Published var microReview: String
     @Published var readMe: Bool
     
